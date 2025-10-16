@@ -1,0 +1,33 @@
+Bootstrap: docker
+From: mcr.microsoft.com/dotnet/sdk:8.0
+
+%arguments
+  version=2.6.0.0
+
+%environment
+  export DOTNET_CLI_TELEMETRY_OPTOUT=1
+
+%post
+  export version={{ version }}
+  download_url=https://g-88ccb6.6d81c.5898.data.globus.org/maxquant
+  export DOTNET_CLI_TELEMETRY_OPTOUT=1
+# Install requirements
+  apt-get update && \
+  apt-get install -y gnupg ca-certificates curl wget unzip xauth x11-apps libgtk2.0-0 xmlstarlet libxgboost0
+# Install MaxQuant
+  cd /opt &&\
+      curl -k -s -S -o MaxQuant-${version}.zip "${download_url}/MaxQuant-${version}.zip" &&\
+      unzip MaxQuant-${version}.zip -d MaxQuant &&\
+      rm MaxQuant-${version}.zip
+
+%runscript
+  echo "Running MaxQuant with command: dotnet /opt/MaxQuant/bin/MaxQuantCmd.dll $*"
+  exec dotnet /opt/MaxQuant/bin/MaxQuantCmd.dll "$@"
+
+%labels
+  Software MaxQuant
+  Version {{ version }}
+  Author Christian Poitras, IRCM based on Docker container by Raoul Jean Pierre Bonnal, IFOM
+
+%help
+    Runs MaxQuant with all parameters specified.
