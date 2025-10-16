@@ -87,7 +87,7 @@ Otherwise, MaxQuant will fail.
 To fix the files, just run the following command.
 
 ```shell
-fix-dda-files-for-dia.py --evidence dda/evidence.txt --msms msms.txt --out_evidence dda/evidence-fix.txt --out_msms dda/msms-fix.txt
+fix-dda-files-for-dia.py --evidence dda/evidence.txt --msms dda/msms.txt --out_evidence dda/evidence-fix.txt --out_msms dda/msms-fix.txt
 cp -f dda/evidence-fix.txt dda/evidence.txt
 cp -f dda/msms-fix.txt dda/msms.txt
 ```
