@@ -9,6 +9,8 @@ then
   module purge
   module load StdEnv/2023
   module load apptainer/1
+  echo
+  echo
 fi
 
 containers=(*.sif)
