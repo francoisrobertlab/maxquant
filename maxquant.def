@@ -16,9 +16,10 @@ From: mcr.microsoft.com/dotnet/sdk:8.0
   apt-get install -y gnupg ca-certificates curl wget unzip xauth x11-apps libgtk2.0-0 xmlstarlet libxgboost0
 # Install MaxQuant
   cd /opt &&\
-      curl -k -s -S -o MaxQuant-${version}.zip "${download_url}/MaxQuant-${version}.zip" &&\
-      unzip MaxQuant-${version}.zip -d MaxQuant &&\
-      rm MaxQuant-${version}.zip
+      curl -k -s -S -o MaxQuant_v${version}.zip "${download_url}/MaxQuant_v${version}.zip" &&\
+      unzip MaxQuant_v${version}.zip &&\
+      mv MaxQuant_v${version} MaxQuant &&\
+      rm MaxQuant_v${version}.zip
 
 %runscript
   echo "Running MaxQuant with command: dotnet /opt/MaxQuant/bin/MaxQuantCmd.dll $*"
