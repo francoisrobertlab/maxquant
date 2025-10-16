@@ -89,7 +89,7 @@ maxquant.sh mqpar-container.xml --dryrun
 > You should adjust the number of CPUs and amount of memory (RAM) to use. For DDA samples, you should use 1 CPU per sample.
 
 > [!TIP]
-> If you have access to multiple projects, you will need to specify the account for `sbatch` using parameter `--account=def-roberf`.
+> If you have access to multiple projects, you will need to specify the account for `sbatch` using parameter `--account=def-robertf`.
 
 ```shell
 sbatch --cpus-per-task=12 --mem=96G maxquant.sh mqpar-container.xml
