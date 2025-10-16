@@ -10,7 +10,7 @@ This repository contains scripts to run MaxQuant on Alliance Canada servers.
 4. [Download MaxQuant container](#Download-MaxQuant-container)
 5. [See MaxQuant help (optional)](#See-MaxQuant-help)
 6. [Change folders in MaxQuant parameter file](#Change-folders-in-MaxQuant-parameter-file)
-7. [Checking the different steps MaxQuant will use](#Checking-the-different-steps-MaxQuant-will-use)
+7. [Checking the different steps MaxQuant will use (optional)](#Checking-the-different-steps-MaxQuant-will-use)
 8. [Running MaxQuant](#Running-MaxQuant)
 
 ## Create parameter file on Windows
