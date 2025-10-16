@@ -84,12 +84,12 @@ If you are running a DIA analysis with MaxQuant and you want to use MS/MS spectr
 you need to keep only certain columns in the `evidence.txt` and `msms.txt` files otherwise.
 Otherwise, MaxQuant will fail.
 
-To fix the files, just run the following command.
+To fix the files, just run the following commands.
 
 ```shell
 fix-dda-files-for-dia.py --evidence dda/evidence.txt --msms dda/msms.txt --out_evidence dda/evidence-fix.txt --out_msms dda/msms-fix.txt
-cp -f dda/evidence-fix.txt dda/evidence.txt
-cp -f dda/msms-fix.txt dda/msms.txt
+mv -f dda/evidence-fix.txt dda/evidence.txt
+mv -f dda/msms-fix.txt dda/msms.txt
 ```
 
 ## Checking the different steps MaxQuant will use
