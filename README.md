@@ -10,9 +10,10 @@ This repository contains scripts to run MaxQuant on Alliance Canada servers.
 4. [Download MaxQuant container](#Download-MaxQuant-container)
 5. [See MaxQuant help (optional)](#See-MaxQuant-help)
 6. [Change folders in MaxQuant parameter file](#Change-folders-in-MaxQuant-parameter-file)
-7. [Fix evidence and msms files for DIA](#Fix-evidence-and-msms-files-for-DIA)
-8. [Checking the different steps MaxQuant will use (optional)](#Checking-the-different-steps-MaxQuant-will-use)
-9. [Running MaxQuant](#Running-MaxQuant)
+7. [Change number of threads](#Change-number-of-threads)
+8. [Fix evidence and msms files for DIA](#Fix-evidence-and-msms-files-for-DIA)
+9. [Checking the different steps MaxQuant will use (optional)](#Checking-the-different-steps-MaxQuant-will-use)
+10. [Running MaxQuant](#Running-MaxQuant)
 
 ## Create parameter file on Windows
 
@@ -78,6 +79,16 @@ For DIA using additional `evidence.txt` and `msms.txt` files present in the `dda
 maxquant.sh mqpar.xml --changeFolder mqpar-container.xml /data /data /data/dda
 ```
 
+## Change number of threads
+
+You should adjust the number of CPUs to use in the parameter file.
+This value should match the `--cpus-per-task` parameter used later for `sbatch`.
+See [Running MaxQuant](#Running-MaxQuant).
+
+```shell
+maxquant.sh mqpar-container.xml --changeParameter numThreads 48
+```
+
 ## Fix evidence and msms files for DIA
 
 If you are running a DIA analysis with MaxQuant and you want to use MS/MS spectras from a DDA run,
@@ -101,11 +112,13 @@ maxquant.sh mqpar-container.xml --dryrun
 ## Running MaxQuant
 
 > [!IMPORTANT]
-> You should adjust the number of CPUs and amount of memory (RAM) to use. For DDA samples, you should use 1 CPU per sample.
+> You should adjust the number of CPUs and amount of memory (RAM) to use.
+> The `numThreads` value in the parameter should match the value of the `--cpus-per-task` parameter for `sbatch`.
+> See [Change number of threads](#Change-number-of-threads).
 
 > [!TIP]
 > If you have access to multiple projects, you will need to specify the account for `sbatch` using parameter `--account=def-robertf`.
 
 ```shell
-sbatch --cpus-per-task=12 --mem=96G maxquant.sh mqpar-container.xml
+sbatch --cpus-per-task=48 --mem=96G maxquant.sh mqpar-container.xml
 ```

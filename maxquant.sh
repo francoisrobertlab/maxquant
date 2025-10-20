@@ -32,7 +32,6 @@ if [ $# -eq 0 ]
 then
   args+=("--help")
 fi
-threads_args=()
 
 # Remind user that when using --changeFolder, '/data' should be used as folder.
 if [[ "${args[*]}" == *"-f"* || "${args[*]}" == *"--changeFolder"* ]]
@@ -50,8 +49,6 @@ then
   echo "Coping files from $PWD to $SLURM_TMPDIR for faster access."
   rsync -rvt --exclude="*.out" "$PWD"/* "$SLURM_TMPDIR"
   echo
-
-  threads_args=("--numThreads" "$SLURM_CPUS_PER_TASK")
 
   copy_temp_to_output() {
     echo
@@ -81,5 +78,4 @@ apptainer_params+=("${bind_args[@]}")
 apptainer run \
     "${apptainer_params[@]}" \
     "${workdir}/${container}" \
-    "${args[@]}" \
-    "${threads_args[@]}"
+    "${args[@]}"
