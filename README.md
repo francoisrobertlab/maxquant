@@ -2,6 +2,8 @@
 
 This repository contains scripts to run MaxQuant on Alliance Canada servers.
 
+To install the scripts on Alliance Canada servers and create containers, see [INSTALL.md](INSTALL.md)
+
 ### Steps
 
 1. [Create parameter file on Windows](#Create-parameter-file-on-Windows)
