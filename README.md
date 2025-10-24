@@ -87,6 +87,11 @@ For DDA experiments, a good number of threads is 1.5 times the number of samples
 
 ```shell
 threads=24
+```
+
+Update the parameter file with the selected number of threads.
+
+```shell
 maxquant.sh mqpar-container.xml --changeParameter numThreads $threads
 ```
 
