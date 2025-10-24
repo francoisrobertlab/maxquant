@@ -81,12 +81,13 @@ maxquant.sh mqpar.xml --changeFolder mqpar-container.xml /data /data /data/dda
 
 ## Change number of threads
 
-You should adjust the number of CPUs to use in the parameter file.
-This value should match the `--cpus-per-task` parameter used later for `sbatch`.
-See [Running MaxQuant](#Running-MaxQuant).
+You should choose the right number of threads. Here we show an example using 24 threads.
+
+For DDA experiments, a good number of threads is 1.5 times the number of samples.
 
 ```shell
-maxquant.sh mqpar-container.xml --changeParameter numThreads 48
+threads=24
+maxquant.sh mqpar-container.xml --changeParameter numThreads $threads
 ```
 
 ## Fix evidence and msms files for DIA
@@ -111,14 +112,13 @@ maxquant.sh mqpar-container.xml --dryrun
 
 ## Running MaxQuant
 
-> [!IMPORTANT]
-> You should adjust the number of CPUs and amount of memory (RAM) to use.
-> The `numThreads` value in the parameter should match the value of the `--cpus-per-task` parameter for `sbatch`.
-> See [Change number of threads](#Change-number-of-threads).
+You should choose the right amount of memory (RAM) to use.
+
+If you don't know the amount of memory, you can try with 64GB and adjust if the task fails due to an *out of memory* exception
 
 > [!TIP]
 > If you have access to multiple projects, you will need to specify the account for `sbatch` using parameter `--account=def-robertf`.
 
 ```shell
-sbatch --cpus-per-task=48 --mem=96G maxquant.sh mqpar-container.xml
+sbatch --cpus-per-task=$threads --mem=96G maxquant.sh mqpar-container.xml
 ```
