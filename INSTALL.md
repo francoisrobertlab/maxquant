@@ -55,16 +55,23 @@ Go to [MaxQuant Website](https://www.maxquant.org) and download the MaxQuant ZIP
 
 To create an [Apptainer](https://apptainer.org) container for MaxQuant, you must use a Linux computer. Ideally, you should have root access on the computer. 
 
-> [!IMPORTANT]
-> Replace `<version>` with the actual version number, like `2.7.5.0`.
+```shell
+version=2.7.5.0
+```
+
+```shell
+sudo apptainer build --build-arg version=$version maxquant-$version.sif maxquant.def
+```
+
+On Alliance Canada server, you need to use `fakeroot`. Note that containers created using `fakeroot` may fail.
 
 ```shell
 module load apptainer
-apptainer build --fakeroot --build-arg version=<version> maxquant-<version>.sif maxquant.def
+apptainer build --fakeroot --build-arg version=$version maxquant-$version.sif maxquant.def
 ```
 
 ### Copy container on Globus
 
 ```shell
-scp maxquant-<version>.sif 'narval.computecanada.ca:~/projects/def-robertf/Sharing/globus-shared-apps/maxquant'
+scp maxquant-$version.sif 'narval.computecanada.ca:~/projects/def-robertf/Sharing/globus-shared-apps/maxquant'
 ```
