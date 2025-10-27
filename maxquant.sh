@@ -51,11 +51,13 @@ then
   echo
 
   copy_temp_to_output() {
+    save_exit=$?
     echo
     echo "Copying files back from $SLURM_TMPDIR to $PWD"
     rsync -rvt "$SLURM_TMPDIR"/* "$PWD"
+    exit "$save_exit"
   }
-  trap 'copy_temp_to_output; exit' ERR EXIT
+  trap 'copy_temp_to_output' ERR EXIT SIGINT
 fi
 
 echo "Binding files in './conf' folder to MaxQuant's 'conf' folder."
