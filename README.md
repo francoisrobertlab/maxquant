@@ -13,9 +13,8 @@ To install the scripts on Alliance Canada servers and create containers, see [IN
 5. [See MaxQuant help (optional)](#See-MaxQuant-help)
 6. [Change folders in MaxQuant parameter file](#Change-folders-in-MaxQuant-parameter-file)
 7. [Change number of threads](#Change-number-of-threads)
-8. [Fix evidence and msms files for DIA](#Fix-evidence-and-msms-files-for-DIA)
-9. [Checking the different steps MaxQuant will use (optional)](#Checking-the-different-steps-MaxQuant-will-use)
-10. [Running MaxQuant](#Running-MaxQuant)
+8. [Checking the different steps MaxQuant will use (optional)](#Checking-the-different-steps-MaxQuant-will-use)
+9. [Running MaxQuant](#Running-MaxQuant)
 
 ## Create parameter file on Windows
 
@@ -95,23 +94,6 @@ Update the parameter file with the selected number of threads.
 
 ```shell
 maxquant.sh mqpar-container.xml --changeParameter numThreads $threads
-```
-
-## Fix evidence and msms files for DIA
-
-> [!CAUTION]
-> This section can probably be skipped. Just use the `evidence.txt` and `msms.txt` output from DDA analysis without any changes.
-
-If you are running a DIA analysis with MaxQuant and you want to use MS/MS spectras from a DDA run,
-you need to keep only certain columns in the `evidence.txt` and `msms.txt` files otherwise.
-Otherwise, MaxQuant will fail.
-
-To fix the files, just run the following commands.
-
-```shell
-fix-dda-files-for-dia.py --evidence dda/evidence.txt --msms dda/msms.txt --out_evidence dda/evidence-fix.txt --out_msms dda/msms-fix.txt
-mv -f dda/evidence-fix.txt dda/evidence.txt
-mv -f dda/msms-fix.txt dda/msms.txt
 ```
 
 ## Checking the different steps MaxQuant will use
