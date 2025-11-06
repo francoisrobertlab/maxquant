@@ -3,10 +3,10 @@
 ### Steps
 
 1. [Updating scripts](#Updating-scripts)
-1. [Installing of the scripts](#Installing-of-the-scripts)
+2. [Installing of the scripts](#Installing-of-the-scripts)
    1. [Change directory to `projects` folder](#Change-directory-to-projects-folder)
    2. [Clone repository](#Clone-repository)
-2. [Creating container for MaxQuant](#Creating-container-for-MaxQuant)
+3. [Creating container for MaxQuant](#Creating-container-for-MaxQuant)
 
 ## Updating scripts
 
