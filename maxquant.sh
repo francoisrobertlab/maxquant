@@ -54,6 +54,8 @@ then
     save_exit=$?
     trap - ERR EXIT SIGINT
     echo
+    echo "MaxQuant exit code is $save_exit"
+    echo
     echo "Copying files back from $SLURM_TMPDIR to $PWD"
     rsync -rvt "$SLURM_TMPDIR"/* "$PWD"
     exit "$save_exit"
