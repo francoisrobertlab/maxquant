@@ -52,6 +52,7 @@ then
 
   copy_temp_to_output() {
     save_exit=$?
+    trap - ERR EXIT SIGINT
     echo
     echo "Copying files back from $SLURM_TMPDIR to $PWD"
     rsync -rvt "$SLURM_TMPDIR"/* "$PWD"
