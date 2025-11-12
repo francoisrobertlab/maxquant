@@ -109,5 +109,5 @@ You should choose the right amount of memory (RAM) to use.
 If you don't know the amount of memory, you can try with 64GB and adjust if the task fails due to an *out of memory* exception
 
 ```shell
-sbatch --account=def-robertf --cpus-per-task=$threads --mem=96G maxquant.sh mqpar-container.xml
+sbatch --cpus-per-task=$threads --mem=96G maxquant.sh mqpar-container.xml
 ```

@@ -1,4 +1,5 @@
 #!/bin/bash
+#SBATCH --account=def-robertf
 #SBATCH --time=5-00:00:00
 #SBATCH --output=maxquant-%A.out
 
